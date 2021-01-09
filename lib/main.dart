@@ -19,7 +19,7 @@ class NotesApp extends StatelessWidget {
         title: 'Flutter todo',
         theme: Theme.of(context).copyWith(
           brightness: Brightness.light,
-          primaryColor: Colors.pink,
+          primaryColor: Colors.white,
           accentColor: kAccentColorLight,
           appBarTheme: AppBarTheme.of(context).copyWith(
             elevation: 0,
@@ -28,7 +28,7 @@ class NotesApp extends StatelessWidget {
               color: kIconTintLight,
             ),
           ),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: pin.white,
           bottomAppBarColor: kBottomAppBarColorLight,
           primaryTextTheme: Theme.of(context).primaryTextTheme.copyWith(
             // title
