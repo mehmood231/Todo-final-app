@@ -28,7 +28,7 @@ class NotesApp extends StatelessWidget {
               color: kIconTintLight,
             ),
           ),
-          scaffoldBackgroundColor: pin.white,
+          scaffoldBackgroundColor: Colors.white,
           bottomAppBarColor: kBottomAppBarColorLight,
           primaryTextTheme: Theme.of(context).primaryTextTheme.copyWith(
             // title
@@ -48,6 +48,15 @@ class NotesApp extends StatelessWidget {
     ),
   );
 
+  /// Handle named route
+  Route _generateRoute(RouteSettings settings) {
+    try {
+      return _doGenerateRoute(settings);
+    } catch (e, s) {
+      debugPrint("failed to generate route for $settings: $e $s");
+      return null;
+    }
+  }
 
   Route _doGenerateRoute(RouteSettings settings) {
     if (settings.name?.isNotEmpty != true) return null;
