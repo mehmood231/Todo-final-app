@@ -61,16 +61,6 @@ class NotesApp extends StatelessWidget {
   duration: Duration(seconds: 1),
   vsync: this,
   );
-  /// Handle named route
-  Route _generateRoute(RouteSettings settings) {
-    try {
-      return _doGenerateRoute(settings);
-    } catch (e, s) {
-      debugPrint("failed to generate route for $settings: $e $s");
-      return null;
-    }
-  }
-
   Route _doGenerateRoute(RouteSettings settings) {
     if (settings.name?.isNotEmpty != true) return null;
 
