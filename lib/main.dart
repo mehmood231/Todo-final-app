@@ -19,7 +19,7 @@ class NotesApp extends StatelessWidget {
         title: 'Flutter todo',
         theme: Theme.of(context).copyWith(
           brightness: Brightness.light,
-          primaryColor: Colors.white,
+          primaryColor: Colors.pink,
           accentColor: kAccentColorLight,
           appBarTheme: AppBarTheme.of(context).copyWith(
             elevation: 0,
@@ -48,6 +48,19 @@ class NotesApp extends StatelessWidget {
     ),
   );
 
+  class _MyAppState extends State<MyApp>
+  with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  Animation<double> animation;
+
+  @override
+  void initState() {
+  super.initState();
+
+  controller = AnimationController(
+  duration: Duration(seconds: 1),
+  vsync: this,
+  );
   /// Handle named route
   Route _generateRoute(RouteSettings settings) {
     try {
