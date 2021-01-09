@@ -47,20 +47,36 @@ class NotesApp extends StatelessWidget {
       ),
     ),
   );
-
-  class _MyAppState extends State<MyApp>
-  with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-
   @override
-  void initState() {
-  super.initState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TODO app'),
+      ),
+      body: ListView.builder(
+          itemCount: tasks.length,
+          itemBuilder: (context, index) {
+            return CheckboxListTile(
+              title: Text(tasks[index].getName()),
+              value: tasks[index].isCompleted(),
+              onChanged: (_) => onToggle(tasks[index]),
+            );
+          }),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, '/create'),
+          child: Icon(Icons.add)
+      ),
+    );
+  /// Handle named route
+  Route _generateRoute(RouteSettings settings) {
+    try {
+      return _doGenerateRoute(settings);
+    } catch (e, s) {
+      debugPrint("failed to generate route for $settings: $e $s");
+      return null;
+    }
+  }
 
-  controller = AnimationController(
-  duration: Duration(seconds: 1),
-  vsync: this,
-  );
   Route _doGenerateRoute(RouteSettings settings) {
     if (settings.name?.isNotEmpty != true) return null;
 
